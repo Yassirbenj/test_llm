@@ -28,7 +28,7 @@ if prompt := st.chat_input("What is up?"):
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
             messages=[
-                {"role": "system", "content": "You are an AI specialized in Food. Do not answer anything other than food-related queries."}
+                {"role": m"role", "content": m"content"}
                 for m in st.session_state.messages
             ],
             stream=True,
