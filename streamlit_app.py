@@ -3,7 +3,7 @@ import streamlit as st
 
 st.title("ChatGPT-like clone")
 
-openai.api_key = st.secrets["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"]
+openai.api_key = st.secrets["openai"]
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
