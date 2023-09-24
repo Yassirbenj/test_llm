@@ -18,6 +18,7 @@ with st.form("input form"):
     customer_persona += f"The main characteristics of the company you are working for are {company_char}."
     customer_persona += f"The main pain points in your business are {pain_points} and your decision making factors are {decision_making_factors}." 
     customer_persona += f"your main personality trait are {personnality}."
+    customer_persona += f"you respond briefly to the question. "
     
 
     if st.form_submit_button("Initiate discussion"):
