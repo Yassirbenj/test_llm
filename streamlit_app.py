@@ -13,10 +13,12 @@ with st.form("input form"):
     pain_points=st.text_input("Enter pain points:")
     decision_making_factors=st.text_input("Enter some decision factors:")
     personnality=st.text_input("Enter some key personnality characteristics:")
-    customer_persona = f"You are a customer receiving a call from a sales person. you have the following characterstics. 
-    You are in the industry of {industry}, you have the position of {position}. The main characteristics of the company you are working for are {company_char}.
-    The main pain points in your business are {pain_points} and your decision making factors are {decision_making_factors}.
-    your main personality trait are {personnality}"
+    customer_persona = f"You are a customer receiving a call from a sales person. you have the following characterstics."
+    customer_persona += f"You are in the industry of {industry}, you have the position of {position}."
+    customer_persona += f"The main characteristics of the company you are working for are {company_char}."
+    customer_persona += f"The main pain points in your business are {pain_points} and your decision making factors are {decision_making_factors}." 
+    customer_persona += f"your main personality trait are {personnality}."
+    
 
     if st.form_submit_button("Initiate discussion"):
         if customer_persona is not None:
