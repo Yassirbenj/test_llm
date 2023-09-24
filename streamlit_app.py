@@ -61,4 +61,14 @@ if prompt := st.chat_input("What is up?"):
             full_response += response.choices[0].delta.get("content", "")
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+        st.session_state.messages.append({"role": "assistant", "content": full_response})
+    
+        # Convert the assistant's response to speech
+        tts = gTTS(text=full_response, lang='en')
+        tts.save("assistant_response.mp3")
+    
+        # Play the audio (you might need to install a suitable audio player library)
+        #os.system("mpg321 assistant_response.mp3")
+        st.audio("assistant_response.mp3")
+    
+        message_placeholder.markdown(full_response)
