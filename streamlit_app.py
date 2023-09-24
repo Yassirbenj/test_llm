@@ -9,7 +9,7 @@ st.sidebar.markdown("### Customer Persona")
 customer_persona = st.sidebar.text_area("Enter the customer persona:")
 
 messages = [
-    {"role": "system", "content": ustomer_persona},
+    {"role": "system", "content": customer_persona},
 ]
 
 if "openai_model" not in st.session_state:
