@@ -7,7 +7,7 @@ openai.api_key = st.secrets["openai"]
 
 st.sidebar.markdown("### Customer Persona")
 customer_persona = st.sidebar.text_area("Enter the customer persona:")
-st.text(customer_persona)
+
 
 messages = [
     {"role": "system", "content": customer_persona},
