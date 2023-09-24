@@ -6,7 +6,7 @@ st.title("ChatGPT-like clone")
 openai.api_key = st.secrets["openai"]
 
 messages = [
-    {"role": "system", "content": "You are an AI specialized in Food. Do not answer anything other than food-related queries."},
+    {"role": "system", "content": "You are a customer receiving a call from a sales person. you are an owner of a small size hotel"},
 ]
 
 if "openai_model" not in st.session_state:
