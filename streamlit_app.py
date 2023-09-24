@@ -25,6 +25,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 if prompt := st.chat_input("What is up?"):
+    # Add user input to the messages
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
@@ -32,11 +33,17 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
+
+        # Include the customer persona content in the initial message
+        initial_message = st.session_state.messages[0]["content"]  # Get the customer persona
+        conversation_messages = st.session_state.messages[1:]  # Exclude the customer persona
+
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
             messages=[
-                {"role": m["role"], "content": m["content"]}
-                for m in st.session_state.messages
+                {"role": "system", "content": initial_message},  # Include customer persona
+                *conversation_messages,  # Include other conversation messages
+                {"role": "user", "content": prompt},  # Include user input
             ],
             stream=True,
         ):
