@@ -1,6 +1,6 @@
 import openai
 import streamlit as st
-from gtts import gTTS
+import gTTS
 import os
 
 st.title("Customer simulator")
