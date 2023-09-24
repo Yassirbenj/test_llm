@@ -8,10 +8,10 @@ openai.api_key = st.secrets["openai"]
 st.sidebar.markdown("### Customer Persona")
 customer_persona = st.sidebar.text_area("Enter the customer persona:")
 
-
-messages = [
-    {"role": "system", "content": customer_persona},
-]
+if customer_persona is not None:
+    messages = [
+                {"role": "system", "content": customer_persona},
+                ]
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
