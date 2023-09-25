@@ -75,5 +75,4 @@ if prompt := st.chat_input("Start your call with an introduction"):
 
 clear_result=st.button("Clear discussion")
 if clear_result:
-    messages=[]
     st.session_state.messages = messages
