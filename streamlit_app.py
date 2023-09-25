@@ -72,7 +72,3 @@ if prompt := st.chat_input("Start your call with an introduction"):
         st.audio("assistant_response.mp3")
     
         message_placeholder.markdown(full_response)
-
-clear_result=st.button("Clear discussion")
-if clear_result:
-    st.session_state.messages = messages
