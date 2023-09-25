@@ -8,13 +8,14 @@ openai.api_key = st.secrets["openai"]
 
 with st.form("input form"):
     st.write("<h3>Enter the customer personae ✨</h3>", unsafe_allow_html=True)
+    mode=st.selectbox('What mode do you want for customer?',('Receiving a call from a sales person', 'Doing a call to customer service'))
     industry=st.text_input("Enter customer industry:")
     position=st.text_input("Enter customer position:")
     company_char=st.text_input("Enter company characterstics:")
     pain_points=st.text_input("Enter pain points:")
     decision_making_factors=st.text_input("Enter some decision factors:")
     personnality=st.text_input("Enter some key personnality characteristics:")
-    customer_persona = f"You are a customer receiving a call from a sales person. you have the following characterstics."
+    customer_persona = f"You are a customer {mode}. you have the following characterstics."
     customer_persona += f"You are in the industry of {industry}, you have the position of {position}."
     customer_persona += f"The main characteristics of the company you are working for are {company_char}."
     customer_persona += f"The main pain points in your business are {pain_points} and your decision making factors are {decision_making_factors}." 
