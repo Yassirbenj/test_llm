@@ -61,8 +61,9 @@ evaluation_message = st.text("Evaluate this sales conversation by main factors")
 # When the user submits an evaluation message, send it to ChatGPT for evaluation
 if st.button("Evaluate"):
     if evaluation_message:
+        st.write(conversation)
         # Create a conversation with the evaluation message
-        conversation.append({"role": "user", "content": evaluation_message})
+        #conversation.append({"role": "user", "content": evaluation_message})
         #evaluation_conversation = conversation + [{"role": "user", "content": evaluation_message}]
         
         # Send the evaluation message to ChatGPT
