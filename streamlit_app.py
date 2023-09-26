@@ -5,6 +5,9 @@ st.title("Customer simulator")
 
 openai.api_key = st.secrets["openai"]
 
+# Create an empty string to store the conversation
+conversation_text = ""
+
 with st.form("input form"):
     st.write("<h3>Enter the customer personae ✨</h3>", unsafe_allow_html=True)
     customer_persona = st.text_input("Enter the customer persona:")
