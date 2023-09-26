@@ -1,4 +1,4 @@
-gesimport openai
+import openai
 import streamlit as st
 
 st.title("Customer simulator")
