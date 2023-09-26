@@ -72,3 +72,4 @@ if prompt := st.chat_input("Start your call with an introduction"):
         st.audio("assistant_response.mp3")
     
         message_placeholder.markdown(full_response)
+        evaluate=st.button("Evaluate the discussion")
