@@ -62,12 +62,13 @@ evaluation_message = st.text("Evaluate this sales conversation by main factors")
 if st.button("Evaluate"):
     if evaluation_message:
         # Create a conversation with the evaluation message
-        evaluation_conversation = conversation + [{"role": "user", "content": evaluation_message}]
+        conversation.append({"role": "user", "content": evaluation_message})
+        #evaluation_conversation = conversation + [{"role": "user", "content": evaluation_message}]
         
         # Send the evaluation message to ChatGPT
         evaluation_response = openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
-            messages=evaluation_conversation,
+            messages=conversation,
         )
         
         # Display the evaluation response
