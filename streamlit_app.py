@@ -1,4 +1,4 @@
-import openai
+gesimport openai
 import streamlit as st
 
 st.title("Customer simulator")
@@ -55,9 +55,9 @@ evaluation_message = st.text("Evaluate this sales conversation by main factors")
 # When the user submits an evaluation message, send it to ChatGPT for evaluation
 if st.button("Evaluate"):
     if evaluation_message:
-        st.write(conversation)
+        st.write(messages)
         # Create a conversation with the evaluation message
-        evaluation_conversation = conversation + [{"role": "user", "content": evaluation_message}]
+        evaluation_conversation = messages + [{"role": "user", "content": evaluation_message}]
         
         # Send the evaluation message to ChatGPT
         evaluation_response = openai.ChatCompletion.create(
