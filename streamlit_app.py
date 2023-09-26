@@ -67,12 +67,12 @@ if st.button("Evaluate"):
         #evaluation_conversation = conversation + [{"role": "user", "content": evaluation_message}]
         
         # Send the evaluation message to ChatGPT
-        evaluation_response = openai.ChatCompletion.create(
-            model=st.session_state["openai_model"],
-            messages=conversation,
-        )
+        #evaluation_response = openai.ChatCompletion.create(
+        #    model=st.session_state["openai_model"],
+        #    messages=conversation,
+        #)
         
         # Display the evaluation response
-        st.write("Evaluation Response:")
-        st.write(evaluation_response.choices[0].message["content"])
+        #st.write("Evaluation Response:")
+        #st.write(evaluation_response.choices[0].message["content"])
         
