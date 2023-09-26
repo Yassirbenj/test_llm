@@ -48,8 +48,8 @@ if prompt := st.chat_input("What is up?"):
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
+    st.write (conversation)
 
-st.write (conversation)
 # Add an input field to collect the message for evaluation
 evaluation_message = st.text("Evaluate this sales conversation by main factors")
 
