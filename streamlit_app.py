@@ -5,7 +5,7 @@ st.title("Customer simulator")
 
 openai.api_key = st.secrets["openai"]
 
-text=""
+text="sales person:"
 
 with st.form("input form"):
     st.write("<h3>Enter the customer personae ✨</h3>", unsafe_allow_html=True)
@@ -40,7 +40,7 @@ if prompt := st.chat_input("What is up?"):
         conversation = [{"role": "system", "content": customer_persona}]
         conversation.extend(st.session_state.messages)  # Include other conversation messages
         conversation.append({"role": "user", "content": prompt})  # Include user input
-        text=text+prompt
+        text+=prompt+"."
         
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
@@ -50,7 +50,7 @@ if prompt := st.chat_input("What is up?"):
             full_response += response.choices[0].delta.get("content", "")
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
-        text+=full_response
+        text+="Customer:" + full_response + "."
     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 st.write(text)
