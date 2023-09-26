@@ -6,7 +6,7 @@ st.title("Customer simulator")
 openai.api_key = st.secrets["openai"]
 
 # Create an empty string to store the conversation
-conversation_text = ""
+conversation = ""
 
 with st.form("input form"):
     st.write("<h3>Enter the customer personae ✨</h3>", unsafe_allow_html=True)
@@ -50,16 +50,27 @@ if prompt := st.chat_input("What is up?"):
             full_response += response.choices[0].delta.get("content", "")
             message_placeholder.markdown(full_response + "▌")
 
-             # Append each message to the conversation_text variable
-            conversation_text += f"{response.choices[0].message['role']}: {response.choices[0].delta.get('content', '')}\n"
             
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
-st.write(conversation_text)
+
 # Add an input field to collect the message for evaluation
 evaluation_message = st.text("Evaluate this sales conversation by main factors")
 
 # When the user submits an evaluation message, send it to ChatGPT for evaluation
-
+if st.button("Evaluate"):
+    if evaluation_message:
+        # Create a conversation with the evaluation message
+        evaluation_conversation = conversation + [{"role": "user", "content": evaluation_message}]
+        
+        # Send the evaluation message to ChatGPT
+        evaluation_response = openai.ChatCompletion.create(
+            model=st.session_state["openai_model"],
+            messages=evaluation_conversation,
+        )
+        
+        # Display the evaluation response
+        st.write("Evaluation Response:")
+        st.write(evaluation_response.choices[0].message["content"])
         
