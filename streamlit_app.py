@@ -40,7 +40,7 @@ if prompt := st.chat_input("What is up?"):
         conversation = [{"role": "system", "content": customer_persona}]
         conversation.extend(st.session_state.messages)  # Include other conversation messages
         conversation.append({"role": "user", "content": prompt})  # Include user input
-        text=text+conversation
+        text=text+prompt
         
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
@@ -50,8 +50,8 @@ if prompt := st.chat_input("What is up?"):
             full_response += response.choices[0].delta.get("content", "")
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
+        text+=full_response
     st.session_state.messages.append({"role": "assistant", "content": full_response})
-    st.write (conversation)
 
 st.write(text)
 # Add an input field to collect the message for evaluation
