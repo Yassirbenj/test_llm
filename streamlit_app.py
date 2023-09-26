@@ -50,7 +50,7 @@ if prompt := st.chat_input("What is up?"):
     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 # Add an input field to collect the message for evaluation
-evaluation_message = "Evaluate this sales conversation by main factors"
+evaluation_message = st.text("Evaluate this sales conversation by main factors")
 
 # When the user submits an evaluation message, send it to ChatGPT for evaluation
 if st.button("Evaluate"):
