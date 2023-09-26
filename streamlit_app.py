@@ -49,22 +49,22 @@ if prompt := st.chat_input("What is up?"):
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
-# Add an input field to collect the message for evaluation
-evaluation_message = st.text("Evaluate this sales conversation by main factors")
-
-# When the user submits an evaluation message, send it to ChatGPT for evaluation
-if st.button("Evaluate"):
-    if evaluation_message:
-        # Create a conversation with the evaluation message
-        evaluation_conversation = conversation + [{"role": "user", "content": evaluation_message}]
-        
-        # Send the evaluation message to ChatGPT
-        evaluation_response = openai.ChatCompletion.create(
-            model=st.session_state["openai_model"],
-            messages=evaluation_conversation,
-        )
-        
-        # Display the evaluation response
-        st.write("Evaluation Response:")
-        st.write(evaluation_response.choices[0].message["content"])
+    # Add an input field to collect the message for evaluation
+    evaluation_message = st.text("Evaluate this sales conversation by main factors")
+    
+    # When the user submits an evaluation message, send it to ChatGPT for evaluation
+    if st.button("Evaluate"):
+        if evaluation_message:
+            # Create a conversation with the evaluation message
+            evaluation_conversation = conversation + [{"role": "user", "content": evaluation_message}]
+            
+            # Send the evaluation message to ChatGPT
+            evaluation_response = openai.ChatCompletion.create(
+                model=st.session_state["openai_model"],
+                messages=evaluation_conversation,
+            )
+            
+            # Display the evaluation response
+            st.write("Evaluation Response:")
+            st.write(evaluation_response.choices[0].message["content"])
         
